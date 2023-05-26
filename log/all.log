@@ -1,0 +1,31 @@
+{
+    "timestamp": "23-05-2023 @ 09:42:53",
+    "request": "__main__",
+    "source_ip": "192.168.10.87",
+    "log_type": "INFO",
+    "log_content": "[FLASK] Starting Flask Server..."
+}{
+    "timestamp": "23-05-2023 @ 09:44:01",
+    "request": "__main__",
+    "source_ip": "192.168.10.87",
+    "log_type": "INFO",
+    "log_content": "[FLASK] Starting Flask Server..."
+}{
+    "timestamp": "23-05-2023 @ 09:44:37",
+    "request": "__main__",
+    "source_ip": "192.168.10.87",
+    "log_type": "INFO",
+    "log_content": "[FLASK] Starting Flask Server..."
+}{
+    "timestamp": "24-05-2023 @ 06:45:45",
+    "request": "__main__",
+    "source_ip": "192.168.10.87",
+    "log_type": "INFO",
+    "log_content": "[FLASK] Starting Flask Server..."
+}{
+    "timestamp": "26-05-2023 @ 09:00:46",
+    "request": "__main__",
+    "source_ip": "192.168.10.87",
+    "log_type": "INFO",
+    "log_content": "[FLASK] Starting Flask Server..."
+}
