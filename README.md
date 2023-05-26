@@ -4,8 +4,8 @@
 
 This is a Flask server designed to forward MFA inputs to the Central Access Control System (CACS)
 
-The server has receives the following JSON data:
-```json
+The server has receives the following JSON data (shown as python code):
+```python
 data = {
         "employee_id":<integer>,
         "pin":<integer>,
