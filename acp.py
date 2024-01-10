@@ -6,6 +6,8 @@ import requests
 from datetime import datetime
 
 
+log_entries = []
+
 # Define app, ip address, and port number
 app = Flask(__name__)
 # ip_addr = "192.168.10.87"
@@ -60,6 +62,7 @@ def log(filename, request, src_ip, log_type, content):
         "log_type": str_log_type,
         "log_content": log_content,
     }
+    
     log_entry_dump = json.dumps(log_entry, indent=4)
 
     # Write to master log
