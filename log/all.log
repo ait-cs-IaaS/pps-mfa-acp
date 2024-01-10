@@ -28,4 +28,10 @@
     "source_ip": "localhost",
     "log_type": "INFO",
     "log_content": "[FLASK] Starting Flask Server..."
+}{
+    "timestamp": "10-01-2024 @ 16:48:30",
+    "request": "__main__",
+    "source_ip": "localhost",
+    "log_type": "INFO",
+    "log_content": "[FLASK] Starting Flask Server..."
 }

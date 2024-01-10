@@ -128,6 +128,29 @@ def input():
 
     return jsonify(resp)
 
+def format_all_log(input_file, output_file):
+    # Read data from the input file
+    with open(input_file, 'r') as file:
+        log_entries = file.read().strip()
+ 
+    # Modify the delimiter to properly split JSON objects
+    json_objects = []
+    start = 0
+    for end in range(len(log_entries)):
+        if log_entries[end] == '}':
+            json_objects.append(json.loads(log_entries[start:end + 1]))
+            start = end + 1
+ 
+    # Write formatted data into the output JSON file
+    with open(output_file, 'w') as file:
+        file.write(json.dumps(json_objects, indent=4))
+ 
+# Example usage:
+input_file_path = 'log/all.log'
+output_file_path = 'formatted_all.log.json'
+format_all_log(input_file_path, output_file_path)
+
+
 
 # Main Program!
 if __name__ == "__main__":
