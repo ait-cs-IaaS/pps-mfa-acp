@@ -4,10 +4,15 @@ import pprint
 import base64
 import requests
 from datetime import datetime
+from flask_cors import CORS
 
+
+log_entries = []
 
 # Define app, ip address, and port number
 app = Flask(__name__)
+
+CORS(app)
 # ip_addr = "192.168.10.87"
 # port = 4444
 
@@ -60,6 +65,7 @@ def log(filename, request, src_ip, log_type, content):
         "log_type": str_log_type,
         "log_content": log_content,
     }
+    
     log_entry_dump = json.dumps(log_entry, indent=4)
 
     # Write to master log
@@ -124,6 +130,42 @@ def input():
     print(resp)
 
     return jsonify(resp)
+
+def format_all_log(input_file, output_file):
+    # Read data from the input file
+    with open(input_file, 'r') as file:
+        log_entries = file.read().strip()
+ 
+    # Modify the delimiter to properly split JSON objects
+    json_objects = []
+    start = 0
+    for end in range(len(log_entries)):
+        if log_entries[end] == '}':
+            json_objects.append(json.loads(log_entries[start:end + 1]))
+            start = end + 1
+ 
+    # Write formatted data into the output JSON file
+    with open(output_file, 'w') as file:
+        file.write(json.dumps(json_objects, indent=4))
+ 
+# Example usage:
+input_file_path = 'log/all.log'
+output_file_path = 'formatted_all.log.json'
+format_all_log(input_file_path, output_file_path)
+
+
+
+@app.route('/api/get_data', methods=['GET'])
+def get_data():
+    # Read your JSON file and return it
+    # For simplicity, let's assume you have a file named data.json in the same directory
+    with open('formatted_all.log.json', 'r') as file:
+        data = file.read()
+    return data
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
 
 
 # Main Program!
